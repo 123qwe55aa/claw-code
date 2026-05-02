@@ -17,7 +17,7 @@ use crate::usage::{TokenUsage, UsageTracker};
 
 const DEFAULT_AUTO_COMPACTION_INPUT_TOKENS_THRESHOLD: u32 = 100_000;
 const AUTO_COMPACTION_THRESHOLD_ENV_VAR: &str = "CLAUDE_CODE_AUTO_COMPACT_INPUT_TOKENS";
-const DEFAULT_PREFLIGHT_COMPACTION_INPUT_TOKENS: usize = 80_000;
+const DEFAULT_PREFLIGHT_COMPACTION_INPUT_TOKENS: usize = 150_000;
 #[cfg(test)]
 pub const PREFLIGHT_COMPACTION_TOKENS_ENV_VAR: &str = "CLAUDE_CODE_PREFLIGHT_COMPACT_TOKENS";
 
@@ -1850,7 +1850,7 @@ mod tests {
             std::env::remove_var(PREFLIGHT_COMPACTION_TOKENS_ENV_VAR);
         }
 
-        // Default is 80_000 when env var is not set.
+        // Default is 150_000 when env var is not set.
         assert_eq!(
             preflight_compaction_threshold_from_env(),
             DEFAULT_PREFLIGHT_COMPACTION_INPUT_TOKENS
